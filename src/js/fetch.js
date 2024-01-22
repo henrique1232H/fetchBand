@@ -20,10 +20,11 @@ export default class Artist {
                 this.artists.name = html[0].name;
                 this.artists.count = html[0].score;
                 this.artists.area = html[0].area.name;
-                this.artists.lifeSpan = html[0].area["life-span"].ended;
+                this.artists.lifeSpan = html[0].area["life-span"];
                 this.artists.id = html[0].id;
-            })
 
+                console.log(this.artists)
+            })
     }
 
 }

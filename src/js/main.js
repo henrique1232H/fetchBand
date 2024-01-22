@@ -1,5 +1,3 @@
-import Artist from "./fetch.js";
+import {form} from "./form.js";
 
-const artist = new Artist();
-
-artist.searchArtist()
+form()
