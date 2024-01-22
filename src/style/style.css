@@ -37,6 +37,14 @@ h1 {
     text-transform: uppercase;
 }
 
+.sr-only {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
 @keyframes moveBackground {
     0% {
         background-position: 100% 0;

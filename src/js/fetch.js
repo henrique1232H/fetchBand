@@ -47,10 +47,10 @@ export default class Artist {
         fetch(`https://musicbrainz.org/ws/2/release-group?fmt=json&artist=${this.artists.id}`)
          .then(data => data.json())
          .then(response => {
-            this.artistsWorks.push(response["release-groups"])
+            const releaseGroups = response["release-groups"]
 
-            for(let i = 0; i < this.artistsWorks.length;i++) {
-                console.log(this.artistsWorks[i])
+            for(let i = 0; i < releaseGroups.length;i++) {
+                console.log(releaseGroups[i])
             }
          })
 
