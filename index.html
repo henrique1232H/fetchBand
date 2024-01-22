@@ -12,23 +12,37 @@
 
         <h1>Pesquise seu artista favorito</h1>
 
-        <form action="">
-            <div>
-                <label for="text" class="sr-only">Procurar o artista</label>
-                <input type="text" id="text">
-            </div>
+        <div class="loading hidden">
 
-            <div>
-                <button type="submit">Acessar</button>
-            </div>
-        </form>
+            <span>
 
-        <div>
-            
-            <h2></h2>
-            <h2></h2>
-            <h2></h2>
+            </span>
         </div>
+
+        <section>
+            <form action="">
+                <div>
+                    <label for="text" class="sr-only">Procurar o artista</label>
+                    <input type="text" id="text">
+                </div>
+    
+                <div>
+                    <button type="submit">Acessar</button>
+                </div>
+            </form>
+
+        </section>
+
+
+        <section class="response">
+            <h2></h2>
+            <h2></h2>
+            <h2></h2>
+        </section>
+
+        <section class="more hidden">
+            <button>Ver mais sobre seu artista</button>
+        </section>
     </main>
 
     <script type="module" src="./src/js/main.js"></script>

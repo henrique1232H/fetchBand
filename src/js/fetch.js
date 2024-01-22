@@ -14,6 +14,9 @@ export default class Artist {
 
     
     searchArtist() {
+        document.querySelector(".loading").classList.remove("hidden");
+        document.querySelector(".response").classList.add("hidden");
+
         fetch(`https://musicbrainz.org/ws/2/artist?fmt=json&query=${this.artistSelect}`)
             .then(data => data.json())
             .then(data => data.artists[0])
@@ -27,12 +30,13 @@ export default class Artist {
                     this.artists.lifeSpan = response.area["life-span"];
                     
                 } catch (error) {
-                    
                     console.log(error)
                 }
                 this.artists.id = response.id;
                 
-
+                document.querySelector(".loading").classList.add("hidden");
+                document.querySelector(".response").classList.remove("hidden");
+                document.querySelector(".more").classList.remove("hidden")
                 document.querySelectorAll("h2")[0].innerHTML = `O nome completo é ${this.artists.name}`;
                 document.querySelectorAll('h2')[1].innerHTML = `A contagem é ${this.artists.count}`;
                 document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
@@ -47,11 +51,12 @@ export default class Artist {
         fetch(`https://musicbrainz.org/ws/2/release-group?fmt=json&artist=${this.artists.id}`)
          .then(data => data.json())
          .then(response => {
-            const releaseGroups = response["release-groups"]
+            const releaseGroups = response["release-groups"];
+            console.log(releaseGroups)
 
-            for(let i = 0; i < releaseGroups.length;i++) {
-                console.log(releaseGroups[i])
-            }
+            // for(let i = 0; i < releaseGroups.length;i++) {
+            //     console.log(releaseGroups[i])
+            // }
          })
 
     }
