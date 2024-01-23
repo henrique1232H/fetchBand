@@ -12,7 +12,7 @@ export default class Artist {
    artistsWork = {
         works: [],
         launch: []
-   }
+   };
        
     searchArtist() {
         document.querySelector(".loading").classList.remove("hidden");
@@ -22,6 +22,9 @@ export default class Artist {
             .then(data => data.json())
             .then(data => data.artists[0])
             .then(response => {           
+                document.querySelector(".loading").classList.add("hidden");
+                document.querySelector(".response").classList.remove("hidden");
+                document.querySelector(".more").classList.remove("hidden");
                      
                 try {
                     this.artists.name = response.name;
@@ -32,17 +35,12 @@ export default class Artist {
                 } catch (error) {
                     console.log(error)
                 }
-
                 this.artists.id = response.id;
                 
-                document.querySelector(".loading").classList.add("hidden");
-                document.querySelector(".response").classList.remove("hidden");
-                document.querySelector(".more").classList.remove("hidden");
-
                 this.showMessages()
                 this.searchArtistWork();
+                this.removeTable()
                 
-                console.log(this.artists);
             })
     }
 
@@ -51,14 +49,12 @@ export default class Artist {
          .then(data => data.json())
          .then(response => {
             const releaseGroups = response["release-groups"];
-            console.log(releaseGroups)
 
             for(let i = 0; i < releaseGroups.length;i++) {
                 this.artistsWork.works.push(releaseGroups[i].title);
                 this.artistsWork.launch.push(releaseGroups[i]["first-release-date"])
             }
-
-            this.createTable()
+            this.createTable();
          })
 
     }
@@ -71,7 +67,32 @@ export default class Artist {
 
 
     createTable() {
-        console.log(this.artistsWork.launch)
-        console.log(this.artistsWork.works)
+        const tbody = document.querySelector("tbody");
+
+       
+        for(let i = 0; i < this.artistsWork.works.length;i++) {
+            const tr = document.createElement("tr");
+            const name = document.createElement("td");
+            const release = document.createElement("td")
+
+            tr.appendChild(name)
+            tr.appendChild(release)
+            
+            name.innerHTML = this.artistsWork.works[i];
+            release.innerHTML = this.artistsWork.launch[i]
+
+            tbody.appendChild(tr)
+        }
+
+
+    }
+
+
+    removeTable() {
+        const tbody = document.querySelector("tbody");
+        tbody.innerHTML = ""
+
+        this.artistsWork.works = [];
+        this.artistsWork.launch = [];
     }
 }

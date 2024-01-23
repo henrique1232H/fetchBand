@@ -105,6 +105,7 @@ h1 {
 
 .title {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
