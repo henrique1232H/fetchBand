@@ -9,6 +9,7 @@ export const form = () => {
         e.preventDefault()
 
         if(input.value === "") {
+            document.querySelector(".err").classList.remove("hidden")
             return
         }
         
@@ -17,5 +18,9 @@ export const form = () => {
         artist.searchArtist()
 
         
+    })
+
+    input.addEventListener("focus", () => {
+        document.querySelector(".err").classList.add("hidden")
     })
 }

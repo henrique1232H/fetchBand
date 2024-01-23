@@ -9,10 +9,11 @@ export default class Artist {
         id: this.id
    };
 
-   artistsWorks = []
-   
-
-    
+   artistsWork = {
+        works: [],
+        launch: []
+   }
+       
     searchArtist() {
         document.querySelector(".loading").classList.remove("hidden");
         document.querySelector(".response").classList.add("hidden");
@@ -20,9 +21,8 @@ export default class Artist {
         fetch(`https://musicbrainz.org/ws/2/artist?fmt=json&query=${this.artistSelect}`)
             .then(data => data.json())
             .then(data => data.artists[0])
-            .then(response => {
-                console.log(response)
-                
+            .then(response => {           
+                     
                 try {
                     this.artists.name = response.name;
                     this.artists.count = response.score;
@@ -32,15 +32,14 @@ export default class Artist {
                 } catch (error) {
                     console.log(error)
                 }
+
                 this.artists.id = response.id;
                 
                 document.querySelector(".loading").classList.add("hidden");
                 document.querySelector(".response").classList.remove("hidden");
-                document.querySelector(".more").classList.remove("hidden")
-                document.querySelectorAll("h2")[0].innerHTML = `O nome completo é ${this.artists.name}`;
-                document.querySelectorAll('h2')[1].innerHTML = `A contagem é ${this.artists.count}`;
-                document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
-        
+                document.querySelector(".more").classList.remove("hidden");
+
+                this.showMessages()
                 this.searchArtistWork();
                 
                 console.log(this.artists);
@@ -54,11 +53,25 @@ export default class Artist {
             const releaseGroups = response["release-groups"];
             console.log(releaseGroups)
 
-            // for(let i = 0; i < releaseGroups.length;i++) {
-            //     console.log(releaseGroups[i])
-            // }
+            for(let i = 0; i < releaseGroups.length;i++) {
+                this.artistsWork.works.push(releaseGroups[i].title);
+                this.artistsWork.launch.push(releaseGroups[i]["first-release-date"])
+            }
+
+            this.createTable()
          })
 
     }
 
+    showMessages() {
+        document.querySelectorAll("h2")[0].innerHTML = `O nome completo é ${this.artists.name}`;
+        document.querySelectorAll('h2')[1].innerHTML = `A contagem é ${this.artists.count}`;
+        document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
+    }
+
+
+    createTable() {
+        console.log(this.artistsWork.launch)
+        console.log(this.artistsWork.works)
+    }
 }

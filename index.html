@@ -7,6 +7,10 @@
     <title>Fetch banda</title>
 </head>
 <body>
+
+    <header class="err hidden">
+        Digite o nome do artista
+    </header>
     
     <main>
 
@@ -44,6 +48,39 @@
             <button>Ver mais sobre seu artista</button>
         </section>
     </main>
+
+    <section class="moreTable hidden">
+        <div class="table">
+
+            <section class="title">
+                <h1>Trabalhos feitos</h1>
+
+
+                <span>
+
+                    <label for="closeModal" class="sr-only">Fechar menu</label>
+                    <button class="closeModal" id="closeModal">&times;</button>
+                </span>
+            </section>
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trabalhos:</th>
+                        <th>data de lançamento:</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>a</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
     <script type="module" src="./src/js/main.js"></script>
 </body>
