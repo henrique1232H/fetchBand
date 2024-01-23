@@ -13,6 +13,7 @@ export const buttonTable = () => {
     buttonCloseModal.addEventListener("click", () => {
         sectionTable.classList.add("hidden")
         artist.removeTable()
+        artist.removeResponseAndMore()
         
     })
 }

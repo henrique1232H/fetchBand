@@ -65,6 +65,10 @@ export default class Artist {
         document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
     }
 
+    removeResponseAndMore() {
+        document.querySelector(".response").classList.add("hidden");
+        document.querySelector(".more").classList.add("hidden");
+    }
 
     createTable() {
         const tbody = document.querySelector("tbody");
@@ -77,7 +81,7 @@ export default class Artist {
 
             tr.appendChild(name)
             tr.appendChild(release)
-            
+
             name.innerHTML = this.artistsWork.works[i];
             release.innerHTML = this.artistsWork.launch[i]
 
