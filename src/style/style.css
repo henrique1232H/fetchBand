@@ -99,7 +99,7 @@ h1 {
 }
 
 .table {
-    height: 70%;
+    height: auto;
     width: min(60rem, 90%);
 }
 
