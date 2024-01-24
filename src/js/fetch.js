@@ -111,18 +111,20 @@ export default class Artist {
 
       name.innerHTML = this.artistsWork.works[i];
 
-      this.artistsWork.launch[i] === "" ? release.innerHTML = "N/A" : release.innerHTML = this.artistsWork.launch[i]
+      this.artistsWork.launch[i] === "" ? release.innerHTML = "N/A*" : release.innerHTML = this.artistsWork.launch[i]
 
-      typeof this.artistsWork.secondayType[i] === "undefined" ? type.innerHTML = this.artistsWork.firstType[i] : type.innerHTML = `${this.artistsWork.firstType[i]} / ${this.artistsWork.secondayType[i]}`
+      typeof this.artistsWork.secondayType[i] === "undefined" ? type.innerHTML = this.artistsWork.firstType[i] : type.innerHTML = `${this.artistsWork.secondayType[i]}`
             
       if(typeof this.artistsWork.firstType[i] === "object") {
-        type.innerHTML = "N/A";
+        type.innerHTML = "N/A*";
       }
       
 
       this.tbody.appendChild(tr);
     }
+
   }
+
 
   removeTable() {
     this.tbody.innerHTML = "";

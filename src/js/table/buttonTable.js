@@ -7,14 +7,14 @@ export const buttonTable = () => {
     const artist = new Artist()
 
     buttonOpenModal.addEventListener("click", () => {
-        sectionTable.classList.remove("hidden")
+        sectionTable.classList.remove("hidden");
     })
 
     buttonCloseModal.addEventListener("click", () => {
-        sectionTable.classList.add("hidden")
-        artist.removeTable()
-        artist.removeResponseAndMore()
-        document.querySelector("input").value = ""
+        sectionTable.classList.add("hidden");
+        artist.removeTable();
+        artist.removeResponseAndMore();
+        document.querySelector("input").value = "";
         
     })
 }
