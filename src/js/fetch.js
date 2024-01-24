@@ -68,7 +68,6 @@ export default class Artist {
       .then((data) => data.json())
       .then((response) => {
         const releaseGroups = response["release-groups"];
-        console.log(releaseGroups)
         
         for (let i = 0; i < releaseGroups.length; i++) {
           this.artistsWork.works.push(releaseGroups[i].title);
@@ -78,7 +77,6 @@ export default class Artist {
           
         }
 
-        console.log(this.artistsWork.secondayType)
         this.createTable();
       });
   }
@@ -103,7 +101,7 @@ export default class Artist {
       const release = document.createElement("td");
 
       tr.appendChild(name);
-      tr.appendChild(type)
+      tr.appendChild(type);
       tr.appendChild(release);
 
       name.innerHTML = this.artistsWork.works[i];
