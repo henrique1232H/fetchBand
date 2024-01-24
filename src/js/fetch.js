@@ -12,6 +12,7 @@ export default class Artist {
     area: this.area,
     lifeSpan: this.lifeSpan,
     id: this.id,
+    type: this.type
   };
 
   artistsWork = {
@@ -40,6 +41,7 @@ export default class Artist {
           this.artists.name = response.name;
           this.artists.count = response.score;
           this.artists.lifeSpan = response.area["life-span"];
+          this.artists.type = response.type
         } catch (error) {
 
           console.log(error);
@@ -82,6 +84,9 @@ export default class Artist {
   }
 
   showMessages() {
+
+    this.artists.type === "Person" ? document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos por ${this.artists.name}` : document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos pela banda ${this.artists.name}`;
+
     document.querySelectorAll("h2")[0].innerHTML = `O nome completo é ${this.artists.name}`;
     document.querySelectorAll("h2")[1].innerHTML = `A contagem é ${this.artists.count}`;
     document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
@@ -106,19 +111,14 @@ export default class Artist {
 
       name.innerHTML = this.artistsWork.works[i];
 
-      if(this.artistsWork.launch[i] === "") {
-        release.innerHTML = "N/A";
-      }else {
-        release.innerHTML = this.artistsWork.launch[i];
+      this.artistsWork.launch[i] === "" ? release.innerHTML = "N/A" : release.innerHTML = this.artistsWork.launch[i]
+
+      typeof this.artistsWork.secondayType[i] === "undefined" ? type.innerHTML = this.artistsWork.firstType[i] : type.innerHTML = `${this.artistsWork.firstType[i]} / ${this.artistsWork.secondayType[i]}`
+            
+      if(typeof this.artistsWork.firstType[i] === "object") {
+        type.innerHTML = "N/A";
       }
-
-
-      if(typeof this.artistsWork.secondayType[i] === "undefined") {
-        type.innerHTML = this.artistsWork.firstType[i];
-      } else {
-        type.innerHTML = `${this.artistsWork.firstType[i]} / ${this.artistsWork.secondayType[i]}`
-      }
-
+      
 
       this.tbody.appendChild(tr);
     }
