@@ -1,6 +1,10 @@
 export default class Artist {
+  tbody = document.querySelector("tbody");
+  loading = document.querySelector(".loading");
+  response = document.querySelector(".response");
+  more = document.querySelector(".more");
+
   artistSelect = this.artistSelect;
-  tbody = document.querySelector("tbody")
 
   artists = {
     name: this.name,
@@ -17,8 +21,8 @@ export default class Artist {
   };
 
   searchArtist() {
-    document.querySelector(".loading").classList.remove("hidden");
-    document.querySelector(".response").classList.add("hidden");
+    this.loading.classList.remove("hidden");
+    this.response.classList.add("hidden");
 
     fetch(
       `https://musicbrainz.org/ws/2/artist?fmt=json&query=${this.artistSelect}`
@@ -26,9 +30,10 @@ export default class Artist {
       .then((data) => data.json())
       .then((data) => data.artists[0])
       .then((response) => {
-        document.querySelector(".loading").classList.add("hidden");
-        document.querySelector(".response").classList.remove("hidden");
-        document.querySelector(".more").classList.remove("hidden");
+
+        this.loading.classList.add("hidden");
+        this.response.classList.remove("hidden");
+        this.more.classList.remove("hidden");
 
         try {
           this.artists.name = response.name;
@@ -44,7 +49,7 @@ export default class Artist {
 
         } catch(err) {
           document.querySelectorAll("h2")[0].innerHTML = "Esse artista não existe, digite outra"
-          document.querySelector(".more").classList.add("hidden")
+          this.more.classList.add("hidden")
           return;
         }
 
@@ -66,8 +71,10 @@ export default class Artist {
           this.artistsWork.works.push(releaseGroups[i].title);
           this.artistsWork.launch.push(releaseGroups[i]["first-release-date"]);
           this.artistsWork.type.push(releaseGroups[i]["primary-type"])
+
         }
 
+        console.log(this.artistsWork.launch)
         this.createTable();
       });
   }
@@ -79,8 +86,8 @@ export default class Artist {
   }
 
   removeResponseAndMore() {
-    document.querySelector(".response").classList.add("hidden");
-    document.querySelector(".more").classList.add("hidden");
+    this.response.classList.add("hidden");
+    this.more.classList.add("hidden");
   }
 
   createTable() {
@@ -104,9 +111,7 @@ export default class Artist {
   }
 
   removeTable() {
-
     this.tbody.innerHTML = "";
-
     this.artistsWork.works = [];
     this.artistsWork.launch = [];
     this.artistsWork.type = [];
