@@ -1,5 +1,6 @@
 export default class Artist {
   artistSelect = this.artistSelect;
+  tbody = document.querySelector("tbody")
 
   artists = {
     name: this.name,
@@ -64,15 +65,9 @@ export default class Artist {
   }
 
   showMessages() {
-    document.querySelectorAll(
-      "h2"
-    )[0].innerHTML = `O nome completo é ${this.artists.name}`;
-    document.querySelectorAll(
-      "h2"
-    )[1].innerHTML = `A contagem é ${this.artists.count}`;
-    document.querySelectorAll(
-      "h2"
-    )[2].innerHTML = `Ele veio de ${this.artists.area}`;
+    document.querySelectorAll("h2")[0].innerHTML = `O nome completo é ${this.artists.name}`;
+    document.querySelectorAll("h2")[1].innerHTML = `A contagem é ${this.artists.count}`;
+    document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
   }
 
   removeResponseAndMore() {
@@ -81,7 +76,6 @@ export default class Artist {
   }
 
   createTable() {
-    const tbody = document.querySelector("tbody");
     
     for (let i = 0; i < this.artistsWork.works.length; i++) {
       const tr = document.createElement("tr");
@@ -97,13 +91,13 @@ export default class Artist {
       type.innerHTML = this.artistsWork.type[i];
       release.innerHTML = this.artistsWork.launch[i];
 
-      tbody.appendChild(tr);
+      this.tbody.appendChild(tr);
     }
   }
 
   removeTable() {
-    const tbody = document.querySelector("tbody");
-    tbody.innerHTML = "";
+
+    this.tbody.innerHTML = "";
 
     this.artistsWork.works = [];
     this.artistsWork.launch = [];
