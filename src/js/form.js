@@ -14,10 +14,7 @@ export const form = () => {
         }
         
         artist.artistSelect = input.value;
-
-        artist.searchArtist()
-
-        
+        artist.searchArtist()        
     })
 
     input.addEventListener("focus", () => {
