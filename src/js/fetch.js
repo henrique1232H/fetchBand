@@ -107,5 +107,6 @@ export default class Artist {
 
     this.artistsWork.works = [];
     this.artistsWork.launch = [];
+    this.artistsWork.type = [];
   }
 }

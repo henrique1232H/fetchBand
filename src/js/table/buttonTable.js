@@ -14,6 +14,7 @@ export const buttonTable = () => {
         sectionTable.classList.add("hidden")
         artist.removeTable()
         artist.removeResponseAndMore()
+        document.querySelector("input").value = ""
         
     })
 }
