@@ -1,4 +1,4 @@
-import Artist from "./fetch.js";
+import Artist from "./classArtist.js";
 
 export const form = () => {
     const form = document.querySelector("form");
