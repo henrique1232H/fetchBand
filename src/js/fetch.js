@@ -38,7 +38,15 @@ export default class Artist {
         } catch (error) {
           console.log(error);
         }
-        this.artists.id = response.id;
+
+        try {
+          this.artists.id = response.id;
+
+        } catch(err) {
+          document.querySelectorAll("h2")[0].innerHTML = "Esse artista não existe, digite outra"
+          document.querySelector(".more").classList.add("hidden")
+          return;
+        }
 
         this.showMessages();
         this.searchArtistWork();
