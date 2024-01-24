@@ -38,18 +38,19 @@ export default class Artist {
         try {
           this.artists.name = response.name;
           this.artists.count = response.score;
-          this.artists.area = response.area.name;
           this.artists.lifeSpan = response.area["life-span"];
         } catch (error) {
+
           console.log(error);
         }
-
+        
         try {
+          this.artists.area = response.area.name;
           this.artists.id = response.id;
 
         } catch(err) {
           document.querySelectorAll("h2")[0].innerHTML = "Esse artista não existe, digite outra"
-          this.more.classList.add("hidden")
+          this.more.classList.add("hidden");
           return;
         }
 
@@ -74,7 +75,6 @@ export default class Artist {
 
         }
 
-        console.log(this.artistsWork.launch)
         this.createTable();
       });
   }
