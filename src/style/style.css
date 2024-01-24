@@ -135,6 +135,7 @@ table thead tr th {
 }
 
 table td, th {
+    padding-left: .4rem;
     border: 1px solid #000;
 }
 
