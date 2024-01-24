@@ -16,7 +16,8 @@ export default class Artist {
 
   artistsWork = {
     works: [],
-    type: [],
+    firstType: [],
+    secondayType: [],
     launch: [],
   };
 
@@ -67,14 +68,17 @@ export default class Artist {
       .then((data) => data.json())
       .then((response) => {
         const releaseGroups = response["release-groups"];
-
+        console.log(releaseGroups)
+        
         for (let i = 0; i < releaseGroups.length; i++) {
           this.artistsWork.works.push(releaseGroups[i].title);
           this.artistsWork.launch.push(releaseGroups[i]["first-release-date"]);
-          this.artistsWork.type.push(releaseGroups[i]["primary-type"])
-
+          this.artistsWork.firstType.push(releaseGroups[i]["primary-type"])
+          this.artistsWork.secondayType.push(releaseGroups[i]["secondary-types"][0])
+          
         }
 
+        console.log(this.artistsWork.secondayType)
         this.createTable();
       });
   }
@@ -103,8 +107,20 @@ export default class Artist {
       tr.appendChild(release);
 
       name.innerHTML = this.artistsWork.works[i];
-      type.innerHTML = this.artistsWork.type[i];
-      release.innerHTML = this.artistsWork.launch[i];
+
+      if(this.artistsWork.launch[i] === "") {
+        release.innerHTML = "N/A";
+      }else {
+        release.innerHTML = this.artistsWork.launch[i];
+      }
+
+
+      if(typeof this.artistsWork.secondayType[i] === "undefined") {
+        type.innerHTML = this.artistsWork.firstType[i];
+      } else {
+        type.innerHTML = `${this.artistsWork.firstType[i]} / ${this.artistsWork.secondayType[i]}`
+      }
+
 
       this.tbody.appendChild(tr);
     }
@@ -114,6 +130,7 @@ export default class Artist {
     this.tbody.innerHTML = "";
     this.artistsWork.works = [];
     this.artistsWork.launch = [];
-    this.artistsWork.type = [];
+    this.artistsWork.firstType = [];
+    this.artistsWork.secondayType = []
   }
 }

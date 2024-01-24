@@ -137,6 +137,19 @@ table thead tr th {
 table td, th {
     padding-left: .4rem;
     border: 1px solid #000;
+
+}
+
+thead tr {
+    font-size: 1.3rem;
+}
+
+tbody tr {
+    font-size: 1.2rem;
+}
+
+tbody tr:hover {
+    background: rgba(0,0,0,0.2);
 }
 
 
