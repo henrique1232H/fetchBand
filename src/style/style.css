@@ -91,6 +91,31 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
+
+.sectionForm {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.sectionForm form {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form input {
+    width: 100%;
+    padding: 1rem;
+}
+
 .sr-only {
     height: 1px;
     width: 1px;
@@ -112,10 +137,16 @@ h1 {
     place-content: center;
 }
 
+
 .hidden {
-    visibility: hidden;
     opacity: 0;
     display: none;
+    visibility: hidden;
+}
+
+.hiddenButNotDisplayNone {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .loading span {

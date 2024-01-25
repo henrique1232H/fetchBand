@@ -12,8 +12,13 @@ export const buttonTable = () => {
 
     buttonCloseModal.addEventListener("click", () => {
         sectionTable.classList.add("hidden");
+
+        document.querySelector(".sectionForm .more").classList.add("hiddenButNotDisplayNone")
+        document.querySelector(".sectionForm .response").classList.add("hiddenButNotDisplayNone")
         artist.removeTable();
         artist.removeResponseAndMore();
+
+        
         document.querySelector("input").value = "";
         
     })

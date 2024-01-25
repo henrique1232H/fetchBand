@@ -13,6 +13,8 @@ export const form = () => {
             return
         }
         
+        document.querySelector(".sectionForm .more").classList.remove("hiddenButNotDisplayNone")
+        document.querySelector(".sectionForm .response").classList.remove("hiddenButNotDisplayNone")
         artist.artistSelect = input.value;
         artist.searchArtist()        
     })

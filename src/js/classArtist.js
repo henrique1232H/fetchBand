@@ -24,7 +24,7 @@ export default class Artist {
 
   searchArtist() {
     this.loading.classList.remove("hidden");
-    this.response.classList.add("hidden");
+    this.response.classList.add("hiddenButNotDisplayNone");
 
     fetch(
       `https://musicbrainz.org/ws/2/artist?fmt=json&query=${this.artistSelect}`
@@ -34,8 +34,8 @@ export default class Artist {
       .then((response) => {
 
         this.loading.classList.add("hidden");
-        this.response.classList.remove("hidden");
-        this.more.classList.remove("hidden");
+        this.response.classList.remove("hiddenButNotDisplayNone");
+        this.more.classList.remove("hiddenButNotDisplayNone");
 
         try {
           this.artists.name = response.name;
@@ -93,8 +93,8 @@ export default class Artist {
   }
 
   removeResponseAndMore() {
-    this.response.classList.add("hidden");
-    this.more.classList.add("hidden");
+    this.response.classList.add("hiddenButNotDisplayNone");
+    this.more.classList.add("hiddenButNotDisplayNone");
   }
 
   createTable() {
