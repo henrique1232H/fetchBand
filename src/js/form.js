@@ -16,7 +16,7 @@ export const form = () => {
         document.querySelector(".sectionForm .more").classList.remove("hiddenButNotDisplayNone")
         document.querySelector(".sectionForm .response").classList.remove("hiddenButNotDisplayNone")
         artist.artistSelect = input.value;
-        artist.searchArtist()        
+        artist.menuArtist()        
     })
 
     input.addEventListener("focus", () => {

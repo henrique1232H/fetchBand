@@ -173,13 +173,24 @@ form input {
 
 .sectionShowArtists .menuShowArtist {
     width: min(42rem, 90%);
-    height: auto;
+    height: 50vh;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
 }
 
 .table {
     height: auto;
     padding: 1rem 2rem;
     width: min(60rem, 90%);
+}
+
+ul li {
+    margin-bottom: 1rem;
+}
+
+li button {
+    height: auto;
+    width: 100%;
 }
 
 .title {
