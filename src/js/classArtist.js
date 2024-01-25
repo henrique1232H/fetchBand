@@ -32,6 +32,7 @@ export default class Artist {
       .then((data) => data.json())
       .then((data) => data.artists[0])
       .then((response) => {
+        console.log(response)
 
         this.loading.classList.add("hidden");
         this.response.classList.remove("hiddenButNotDisplayNone");
@@ -40,7 +41,7 @@ export default class Artist {
         try {
           this.artists.name = response.name;
           this.artists.count = response.score;
-          this.artists.lifeSpan = response.area["life-span"];
+          this.artists.lifeSpan = response["life-span"];
           this.artists.type = response.type
         } catch (error) {
 
@@ -71,14 +72,13 @@ export default class Artist {
       .then((response) => {
         const releaseGroups = response["release-groups"];
         
-        for (let i = 0; i < releaseGroups.length; i++) {
-          this.artistsWork.works.push(releaseGroups[i].title);
-          this.artistsWork.launch.push(releaseGroups[i]["first-release-date"]);
-          this.artistsWork.firstType.push(releaseGroups[i]["primary-type"])
-          this.artistsWork.secondayType.push(releaseGroups[i]["secondary-types"][0])
-          
-        }
-
+        releaseGroups.forEach(e => {
+          this.artistsWork.works.push(e.title);
+          this.artistsWork.launch.push(e["first-release-date"]);
+          this.artistsWork.firstType.push(e["primary-type"])
+          this.artistsWork.secondayType.push(e["secondary-types"][0])
+        })
+        
         this.createTable();
       });
   }

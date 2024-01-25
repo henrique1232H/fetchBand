@@ -87,7 +87,8 @@ h1 {
 .start h1 {
     color: #fff;
     background: -webkit-linear-gradient(45deg, var(--bg-first-color), var(--bg-second-color) 80%);
-    background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text ;
     -webkit-text-fill-color: transparent;
 }
 
@@ -168,6 +169,11 @@ form input {
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+
+.sectionShowArtists .menuShowArtist {
+    width: min(42rem, 90%);
+    height: auto;
 }
 
 .table {
