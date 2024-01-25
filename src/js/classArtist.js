@@ -131,6 +131,6 @@ export default class Artist {
     this.artistsWork.works = [];
     this.artistsWork.launch = [];
     this.artistsWork.firstType = [];
-    this.artistsWork.secondayType = []
+    this.artistsWork.secondayType = [];
   }
 }
