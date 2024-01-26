@@ -72,22 +72,22 @@ export default class Artist {
           button.innerHTML = `${object.name} / ${object.type} / ${object.disambiguation}`
 
 
+          
+          
+          if(typeof object.type === "undefined") {
+            button.innerHTML = `${object.name} / ${object.disambiguation}`
+          }
+          
+          if(typeof object.disambiguation === "undefined") {
+            button.innerHTML = `${object.name} / ${object.type}`
+          }
+          
+          
           if(typeof object.type === "undefined" && typeof object.disambiguation === "undefined") {
 
             button.innerHTML = `${object.name}`
           }
-
-
-          if(typeof object.type === "undefined") {
-            button.innerHTML = `${object.name} / ${object.disambiguation}`
-          }
-
-          if(typeof object.disambiguation === "undefined") {
-            button.innerHTML = `${object.name} / ${object.type}`
-          }
-
-
-
+          
           
 
           li.appendChild(button)
