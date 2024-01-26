@@ -82,9 +82,8 @@ export default class Artist {
             button.innerHTML = `${object.name} / ${object.type}`
           }
           
-          
+        
           if(typeof object.type === "undefined" && typeof object.disambiguation === "undefined") {
-
             button.innerHTML = `${object.name}`
           }
           
