@@ -125,6 +125,7 @@ export default class Artist {
             document.querySelectorAll("h2")[1].innerHTML = ""
             document.querySelectorAll("h2")[2].innerHTML = ""
             this.more.classList.add("hiddenButNotDisplayNone")
+            this.removeTable()
             return
         }
 
