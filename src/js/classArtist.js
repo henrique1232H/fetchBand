@@ -41,7 +41,7 @@ export default class Artist {
       .then((data) => {
         this.removeLoading();
 
-
+        // Verificar se o array está vazio
         if(data.length === 0) {
           this.removeMessages()
           document.querySelector(".err").classList.remove("hidden")
