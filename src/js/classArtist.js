@@ -141,6 +141,7 @@ export default class Artist {
       .then((data) => data.json())
       .then((response) => {
         const releaseGroups = response["release-groups"];
+        console.log(releaseGroups)
 
         releaseGroups.forEach((e) => {
           this.artistsWork.works.push(e.title);
