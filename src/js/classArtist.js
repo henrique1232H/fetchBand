@@ -41,10 +41,8 @@ export default class Artist {
       .then((data) => {
         this.removeLoading();
         this.menu.classList.remove("hidden");
-        let value = -1
 
-        this.artistsInTheMenu.artists = []
-        
+        let value = -1        
 
         data.forEach((e) => {
           this.artistsInTheMenu.artists.push(e);
@@ -65,14 +63,13 @@ export default class Artist {
             const number = Number(button.value)
 
             this.searchArtist(number)
-            this.removeTable();
             this.menu.classList.add("hidden");
           })
 
+
+          // Colocar os nomes dos artistas, o tipo e o que ele faz nos botões
+
           button.innerHTML = `${object.name} / ${object.type} / ${object.disambiguation}`
-
-
-          
           
           if(typeof object.type === "undefined") {
             button.innerHTML = `${object.name} / ${object.disambiguation}`
@@ -125,10 +122,10 @@ export default class Artist {
         } catch (err) {
           document.querySelectorAll("h2")[0].innerHTML =
             "Não temos informações desse artista, por favor procure outro";
-
             document.querySelectorAll("h2")[1].innerHTML = ""
             document.querySelectorAll("h2")[2].innerHTML = ""
-          return;
+            this.more.classList.add("hiddenButNotDisplayNone")
+            return
         }
 
         this.showMessages();
@@ -143,7 +140,6 @@ export default class Artist {
     )
       .then((data) => data.json())
       .then((response) => {
-        console.log
         const releaseGroups = response["release-groups"];
 
         releaseGroups.forEach((e) => {
@@ -158,13 +154,14 @@ export default class Artist {
   }
 
   showMessages() {
-    this.artists.type === "Person"
-      ? (document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos por ${this.artists.name}`)
-      : (document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos pela banda ${this.artists.name}`);
-
+    
     document.querySelectorAll("h2")[0].innerHTML = `O nome completo é ${this.artists.name}`;
     document.querySelectorAll("h2")[1].innerHTML = `A contagem é ${this.artists.count}`;
     document.querySelectorAll("h2")[2].innerHTML = `Ele veio de ${this.artists.area}`;
+
+    this.artists.type === "Person"
+      ? (document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos por ${this.artists.name}`)
+      : (document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos pela banda ${this.artists.name}`);
   }
 
   removeResponseAndMore() {
@@ -209,11 +206,11 @@ export default class Artist {
 
   removeTable() {
     this.tbody.innerHTML = "";
-
-    document.querySelector("ul").innerHTML = "";
-    this.artistsInTheMenu.artists = [];
+    this.ul.innerHTML = "";
     this.artistsInTheMenu.artistChoosed = "";
 
+
+    this.artistsInTheMenu.artists = [];
     this.artistsWork.works = [];
     this.artistsWork.launch = [];
     this.artistsWork.firstType = [];
