@@ -51,7 +51,7 @@ export default class Artist {
 
         this.menu.classList.remove("hidden");
 
-        let value = -1        
+        let value = -1;   
 
         data.forEach((e) => {
           this.artistsInTheMenu.artists.push(e);
@@ -154,7 +154,6 @@ export default class Artist {
       .then((data) => data.json())
       .then((response) => {
         const releaseGroups = response["release-groups"];
-        console.log(releaseGroups)
 
         releaseGroups.forEach((e) => {
           this.artistsWork.works.push(e.title);
