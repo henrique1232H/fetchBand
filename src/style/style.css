@@ -93,6 +93,17 @@ h1 {
 }
 
 
+.sectionShowArtists span {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+
+.sectionShowArtists span button {
+    padding:1rem;
+}
+
 .sectionForm {
     height: 100%;
     display: flex;

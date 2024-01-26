@@ -40,6 +40,15 @@ export default class Artist {
       .then((data) => data.artists)
       .then((data) => {
         this.removeLoading();
+
+
+        if(data.length === 0) {
+          this.removeMessages()
+          document.querySelector(".err").classList.remove("hidden")
+          document.querySelector(".err").innerHTML = "Esse artista não existe";
+          return;
+        }
+
         this.menu.classList.remove("hidden");
 
         let value = -1        
@@ -48,7 +57,10 @@ export default class Artist {
           this.artistsInTheMenu.artists.push(e);
         });
 
+
+
         this.artistsInTheMenu.artists.forEach(object => {
+          
           value++
 
           const li = document.createElement("li");
@@ -166,17 +178,6 @@ export default class Artist {
       : (document.querySelectorAll("h1")[1].innerHTML = `Trabalhos feitos pela banda ${this.artists.name}`);
   }
 
-  removeResponseAndMore() {
-    this.response.classList.add("hiddenButNotDisplayNone");
-    this.more.classList.add("hiddenButNotDisplayNone");
-  }
-
-  removeLoading() {
-    this.loading.classList.add("hidden");
-    this.response.classList.remove("hiddenButNotDisplayNone");
-    this.more.classList.remove("hiddenButNotDisplayNone");
-  }
-
   createTable() {
     for (let i = 0; i < this.artistsWork.works.length; i++) {
       const tr = document.createElement("tr");
@@ -204,6 +205,25 @@ export default class Artist {
 
       this.tbody.appendChild(tr);
     }
+  }
+
+  removeResponseAndMore() {
+    this.response.classList.add("hiddenButNotDisplayNone");
+    this.more.classList.add("hiddenButNotDisplayNone");
+  }
+
+  removeLoading() {
+    this.loading.classList.add("hidden");
+    this.response.classList.remove("hiddenButNotDisplayNone");
+    this.more.classList.remove("hiddenButNotDisplayNone");
+  }
+
+  removeMessages() {
+    document.querySelectorAll("h2")[0].innerHTML = ``;
+    document.querySelectorAll("h2")[1].innerHTML = ``;
+    document.querySelectorAll("h2")[2].innerHTML = ``;
+
+    this.more.classList.add("hiddenButNotDisplayNone")
   }
 
   removeTable() {
