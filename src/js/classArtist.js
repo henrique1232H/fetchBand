@@ -4,7 +4,7 @@ export default class Artist {
   response = document.querySelector(".response");
   more = document.querySelector(".more");
   menu = document.querySelector(".sectionShowArtists");
-  ul = document.querySelector("ul")
+  ul = document.querySelector("ul");
 
   artistSelect = this.artistSelect;
 
@@ -63,15 +63,33 @@ export default class Artist {
             this.artistsInTheMenu.artistChoosed = object.id;
 
             const number = Number(button.value)
-            console.log(number);
 
             this.searchArtist(number)
             this.removeTable();
-            
             this.menu.classList.add("hidden");
           })
 
-          button.innerHTML = `${object.name} / ${object.type} / ${object.disambiguation}`;
+          button.innerHTML = `${object.name} / ${object.type} / ${object.disambiguation}`
+
+
+          if(typeof object.type === "undefined" && typeof object.disambiguation === "undefined") {
+
+            button.innerHTML = `${object.name}`
+          }
+
+
+          if(typeof object.type === "undefined") {
+            button.innerHTML = `${object.name} / ${object.disambiguation}`
+          }
+
+          if(typeof object.disambiguation === "undefined") {
+            button.innerHTML = `${object.name} / ${object.type}`
+          }
+
+
+
+          
+
           li.appendChild(button)
           this.ul.appendChild(li)
           
@@ -90,7 +108,6 @@ export default class Artist {
       .then((data) => data.json())
       .then((response) => response.artists[id])
       .then(response => {
-        console.log(response);
 
         this.removeLoading();
 
@@ -108,7 +125,10 @@ export default class Artist {
           this.artists.id = response.id;
         } catch (err) {
           document.querySelectorAll("h2")[0].innerHTML =
-            "Esse artista não existe, digite outra";
+            "Não temos informações desse artista, por favor procure outro";
+
+            document.querySelectorAll("h2")[1].innerHTML = ""
+            document.querySelectorAll("h2")[2].innerHTML = ""
           return;
         }
 

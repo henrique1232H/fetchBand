@@ -7,7 +7,6 @@ export const buttonTable = () => {
     const artist = new Artist()
 
     buttonOpenModal.addEventListener("click", () => {
-        console.log(sectionTable)
         sectionTable[0].classList.add("hidden");
         sectionTable[1].classList.remove("hidden")
     })

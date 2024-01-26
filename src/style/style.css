@@ -173,8 +173,8 @@ form input {
 
 .sectionShowArtists .menuShowArtist {
     width: min(42rem, 90%);
-    height: 50vh;
-    overflow-x: scroll;
+    max-height: 50rem;
+    overflow-y: scroll;
     scroll-behavior: smooth;
 }
 
