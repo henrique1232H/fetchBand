@@ -7,5 +7,6 @@ export const buttonExitModal = () => {
         document.querySelector(".sectionShowArtists").classList.add("hidden")
         artist.removeTable();
         artist.removeMessages()
+        document.querySelector("input").value = ""
     })
 }
