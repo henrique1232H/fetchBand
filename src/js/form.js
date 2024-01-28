@@ -8,6 +8,8 @@ export const form = () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault()
 
+        artist.removeTable()
+
         if(input.value === "") {
             document.querySelector(".err").classList.remove("hidden")
             return
