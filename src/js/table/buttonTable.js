@@ -2,7 +2,7 @@ import Artist from "../classArtist.js";
 
 export const buttonTable = () => {
     const buttonOpenModal = document.querySelector(".more button");
-    const sectionTable = document.querySelectorAll(".moreTable");
+    const sectionTable = document.querySelectorAll(".popUpPosition");
     const buttonCloseModal = document.querySelector(".closeModal");
     const artist = new Artist()
 
