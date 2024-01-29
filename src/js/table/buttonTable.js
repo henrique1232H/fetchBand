@@ -1,4 +1,4 @@
-import Artist from "../classArtist.js";
+import Artist from "../Artist.js";
 
 export const buttonTable = () => {
     const buttonOpenModal = document.querySelector(".more button");

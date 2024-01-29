@@ -1,4 +1,4 @@
-import Artist from "./classArtist.js";
+import Artist from "./Artist.js";
 
 export const form = () => {
     const form = document.querySelector("form");
