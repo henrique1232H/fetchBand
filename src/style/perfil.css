@@ -1,0 +1,27 @@
+
+.perfil {
+    height: 100%;
+    min-height: 20rem;
+    max-height: 60rem;
+    width: min(42rem, 80%);
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: .5rem;
+
+}
+
+.perfil img {
+    height: 20rem;
+    border-radius: 50rem;
+    
+}
+
+.perfil .imgPerfil {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 50rem;
+    padding: .1rem;
+    border: 1px solid #000;
+}

@@ -45,7 +45,7 @@ header {
 main, .table {
     width: min(42rem, 90%);
     margin: 0 auto;
-    height: 50%;
+    height: auto;
     border-radius: .5rem;
     background: var(--color-text);
     box-shadow: 0px 0px 15px 4px #000;
@@ -171,6 +171,13 @@ form input {
     animation: spinning 1s ease-in forwards infinite;
 }
 
+.more {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
 
 .popUpPosition {
     position: absolute;
@@ -182,7 +189,7 @@ form input {
     height: 100vh;
 }
 
-.menuShowArtist {
+.menuShowArtist, .perfil {
     width: min(42rem, 90%);
     max-height: 50rem;
     overflow-y: scroll;
